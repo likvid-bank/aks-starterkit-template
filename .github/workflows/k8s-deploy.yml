@@ -69,7 +69,7 @@ jobs:
           KUBECONFIG_CONTENT: ${{ secrets.KUBECONFIG }}
           IMAGE_TAG: ${{ github.sha }}
           DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
-          PROJECT_NAME: ${{ env.REPO_NAME_LOWER }}
+          PROJECT_NAME: ${{ env.REPO_NAME_LOWER }} # Use the lowercase repository name for deployment image tags
         run: |
           echo "$KUBECONFIG_CONTENT" > kubeconfig
           for file in k8s/*.yml; do
