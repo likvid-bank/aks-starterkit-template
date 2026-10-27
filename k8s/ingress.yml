@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: webapprouting.kubernetes.azure.com
   rules:
-    - host: ${DOMAIN_NAME}.likvid-k8s.msh.host
+    - host: ${DOMAIN_NAME}.${APPS_BASE_DOMAIN}
       http:
         paths:
           - path: /api(/|$)(.*)
@@ -28,5 +28,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - ${DOMAIN_NAME}.likvid-k8s.msh.host
+        - ${DOMAIN_NAME}.${APPS_BASE_DOMAIN}
       secretName: letsencrypt

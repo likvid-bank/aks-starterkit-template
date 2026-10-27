@@ -69,6 +69,9 @@ jobs:
           KUBECONFIG_CONTENT: ${{ secrets.KUBECONFIG }}
           IMAGE_TAG: ${{ github.sha }}
           DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
+          # Fallback keeps repos working whose connector predates APPS_BASE_DOMAIN.
+          APPS_BASE_DOMAIN: ${{ vars.APPS_BASE_DOMAIN || 'likvid-k8s.msh.host' }}
+          ACR_HOST: ${{ secrets.aks_container_registry_host }}
           PROJECT_NAME: ${{ env.REPO_NAME_LOWER }} # Use the lowercase repository name for deployment image tags
         run: |
           echo "$KUBECONFIG_CONTENT" > kubeconfig
